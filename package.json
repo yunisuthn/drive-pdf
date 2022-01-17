@@ -1,0 +1,29 @@
+{
+  "name": "nodejestut",
+  "version": "1.0.0",
+  "description": "NodeJS Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "googleapis": "^92.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rica5/Drive-get-files.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Rica5/Drive-get-files/issues"
+  },
+  "homepage": "https://github.com/Rica5/Drive-get-files#readme"
+}

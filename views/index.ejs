@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <h1 id="filename"></h1>
+    
+        <object id="show" data="" width="100%" height="800px"></object>
+        <form method="get" action="/next">
+        <button>Next</button>
+    </form>
+    
+</body>
+<script>
+    var url = '<%= obj %>';
+    document.getElementById("show").setAttribute('data',url);
+</script>
+</html>
