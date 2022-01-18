@@ -3,7 +3,7 @@ const express = require("express");
 const { json } = require("express/lib/response");
 const app = express();
 const { google } = require("googleapis");
-const port = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8081;
 
 // Fichier static a utiliser
 app.use(express.static("public"));
@@ -101,4 +101,7 @@ app.post("/next", (req, res) => {
 });
 
 //  Ecouter le port 8081
-app.listen(port, () => console.info(`Ecoute sur le port ${port}`));
+const server = app.listen(process.env.PORT || PORT, () => {
+  const port = server.address().port;
+  console.info(`Ecoute sur le port ${port}`);
+});
