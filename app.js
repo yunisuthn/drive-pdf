@@ -2,8 +2,20 @@
 const express = require("express");
 const { json } = require("express/lib/response");
 const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const { google } = require("googleapis");
 const PORT = process.env.PORT || 8081;
+const methodOverride = require("method-override");
+
+app.use(methodOverride("X-HTTP-Method"));
+app.use(methodOverride("X-HTTP-Method-Override"));
+app.use(methodOverride("X-Method-Override"));
+app.use(methodOverride("_method"));
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Fichier static a utiliser
 app.use(express.static("public"));
