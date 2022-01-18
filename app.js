@@ -3,7 +3,7 @@ const express = require("express");
 const { json } = require("express/lib/response");
 const app = express();
 const { google } = require("googleapis");
-const port = 8081;
+const port = process.env.PORT || 8081;
 
 // Fichier static a utiliser
 app.use(express.static("public"));
@@ -12,10 +12,6 @@ app.use("/css", express.static(__dirname + "public/css"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 app.set("views", __dirname + "/public");
-
-// app.set('views', './views')
-// app.set('view engine', 'ejs')
-
 //Googleapi
 const CLIENT_ID =
   "13056989274-d276051fndh9vl7jglvrj8vbpuv9tfmf.apps.googleusercontent.com";
@@ -69,11 +65,6 @@ async function pushFiles() {
 var allfiles;
 var indice = 0;
 
-// app.get("/home", async (req, res) => {
-//   res.render("home.html");
-//   console.log("homz");
-// });
-//Page d'accueil
 app.get("/home", async (req, res) => {
   if (indice == 0) {
     allfiles = await pushFiles();
@@ -82,6 +73,7 @@ app.get("/home", async (req, res) => {
     indice++;
     res.render("home.html", { obj: url });
   } else {
+    console.log("else ==", allfiles.length);
     var total = allfiles.length;
     if (indice < total) {
       var url =
@@ -96,6 +88,7 @@ app.get("/home", async (req, res) => {
 //Bouton next
 app.post("/next", (req, res) => {
   var total = allfiles.length;
+  console.log("total == ", total);
   if (indice < total) {
     console.log(indice);
     var url =
